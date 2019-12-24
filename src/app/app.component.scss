@@ -4,14 +4,19 @@
 .commits {
   max-width: 1000px;
   margin-left: 15%;
-  display: flex;
-  justify-content: center;
+  /*display: flex;
+  justify-content: center;*/
 }
 
 .heading {
   display: flex;
   justify-content: center;
+  margin-top: 5%;
 }
+
+/*.table {
+  max-width: 1000px;
+}*/
 
 table {
   width: 100%;

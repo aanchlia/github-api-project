@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { GithubApiService } from './services/github-api.service';
 
@@ -8,15 +9,15 @@ import { GithubApiService } from './services/github-api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Git Commits';
-  commits = new MatTableDataSource();
-  // commits = [];
   branches: object;
   displayedColumns: string[] = ['name', 'email', 'date', 'message'];
 
-  constructor(private github: GithubApiService) {
-  }
+  commits = new MatTableDataSource();
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+
+  constructor(private github: GithubApiService) { }
 
   ngOnInit(): void {
     this.fetchCommits();
@@ -27,17 +28,8 @@ export class AppComponent implements OnInit{
     this.github.getCommits().subscribe(
       (res) => {
         for (const data of res) {
-          /*const buildData = {
-            name: '',
-            email: '',
-            date: '',
-            message: ''
-          };
-          buildData.name = data.commit.author.name;
-          buildData.email = data.commit.author.email;
-          buildData.date = data.commit.author.date;
-          buildData.message = data.commit.message;*/
           this.commits.data = res;
+          this.commits.paginator = this.paginator;
         }
       }
     );
