@@ -1,6 +1,8 @@
-<mat-progress-spinner class="spinner" *ngIf="loading" color="accent" mode="indeterminate"></mat-progress-spinner>
+<mat-progress-spinner class="spinner" *ngIf="loading" color="primary" mode="indeterminate"></mat-progress-spinner>
 <div class="table">
-  <span class="heading"><h2> {{ title }}</h2></span>
+  <span class="heading">
+    <h2> {{ title }}</h2>
+  </span>
   <div *ngIf="commits" class="commits mat-elevation-z8">
     <table mat-table [dataSource]="commits">
       <ng-container matColumnDef="name">
@@ -32,4 +34,3 @@
     <mat-paginator color="accent" [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
   </div>
 </div>
-

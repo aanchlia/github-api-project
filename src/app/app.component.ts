@@ -11,7 +11,6 @@ import { GithubApiService } from './services/github-api.service';
 })
 export class AppComponent implements OnInit {
   title = 'Git Commits';
-  branches: object;
   displayedColumns: string[] = ['name', 'email', 'date', 'message'];
   loading = true;
 
@@ -22,7 +21,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCommits();
-    this.fetchBranches();
   }
 
   fetchCommits() {
@@ -33,14 +31,6 @@ export class AppComponent implements OnInit {
           this.commits.data = res;
           this.commits.paginator = this.paginator;
         }
-      }
-    );
-  }
-
-  fetchBranches() {
-    this.github.getBranches().subscribe(
-      (res) => {
-        this.branches = res;
       }
     );
   }

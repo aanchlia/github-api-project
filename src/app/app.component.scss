@@ -1,5 +1,5 @@
 @import '~@angular/material/theming';
-@import '~@angular/material/prebuilt-themes/purple-green.css';
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 .commits {
   max-width: 1000px;
@@ -20,4 +20,8 @@
 
 table {
   width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
 }
