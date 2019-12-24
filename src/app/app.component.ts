@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   title = 'Git Commits';
   branches: object;
   displayedColumns: string[] = ['name', 'email', 'date', 'message'];
+  loading = true;
 
   commits = new MatTableDataSource();
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
     this.github.getCommits().subscribe(
       (res) => {
         for (const data of res) {
+          this.loading = false;
           this.commits.data = res;
           this.commits.paginator = this.paginator;
         }

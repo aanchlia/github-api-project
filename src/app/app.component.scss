@@ -1,5 +1,5 @@
 @import '~@angular/material/theming';
-@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~@angular/material/prebuilt-themes/purple-green.css';
 
 .commits {
   max-width: 1000px;
@@ -14,9 +14,9 @@
   margin-top: 5%;
 }
 
-/*.table {
-  max-width: 1000px;
-}*/
+.spinner {
+  margin: 20% auto 0;
+}
 
 table {
   width: 100%;
