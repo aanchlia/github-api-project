@@ -1,11 +1,18 @@
-@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 @import '~@angular/material/theming';
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 
 .commits {
   max-width: 1000px;
-  margin: 10vh 40%;
+  margin-left: 15%;
+  display: flex;
+  justify-content: center;
+}
 
-  p {
-    font-size: 1.125em;
-  }
+.heading {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
 }
