@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   displayedColumns: string[] = ['name', 'email', 'date', 'message'];
 
   commits = new MatTableDataSource();
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
   constructor(private github: GithubApiService) { }
 
