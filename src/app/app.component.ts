@@ -11,7 +11,7 @@ import { GithubApiService } from './services/github-api.service';
 })
 export class AppComponent implements OnInit {
   title = 'Git Commits';
-  displayedColumns: string[] = ['name', 'email', 'date', 'message'];
+  displayedColumns: string[] = ['name', 'date', 'message', 'commit#'];
   loading = true;
 
   commits = new MatTableDataSource();
@@ -26,10 +26,14 @@ export class AppComponent implements OnInit {
   fetchCommits() {
     this.github.getCommits().subscribe(
       (res) => {
-        for (const data of res) {
-          this.loading = false;
-          this.commits.data = res;
-          this.commits.paginator = this.paginator;
+        if (res) {
+          for (const data of res) {
+            this.loading = false;
+            this.commits.data = res;
+            this.commits.paginator = this.paginator;
+          }
+        } else {
+          console.log('Display Error');
         }
       }
     );

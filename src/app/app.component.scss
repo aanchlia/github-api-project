@@ -4,8 +4,6 @@
 .commits {
   max-width: 1000px;
   margin-left: 15%;
-  /*display: flex;
-  justify-content: center;*/
 }
 
 .heading {
@@ -22,6 +20,6 @@ table {
   width: 100%;
 }
 
-th.mat-sort-header-sorted {
-  color: black;
+a {
+  color: white;
 }

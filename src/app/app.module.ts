@@ -12,6 +12,7 @@ import {
 import { HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { URLInterceptor } from './config/url.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,13 @@ import { AppComponent } from './app.component';
     MatFormFieldModule,
     MatInputModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: URLInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

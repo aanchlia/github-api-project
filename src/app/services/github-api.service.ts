@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { throwError as observableThrowError, Observable } from 'rxjs';
+import { throwError as observableThrowError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -9,10 +9,9 @@ import { map, catchError } from 'rxjs/operators';
 export class GithubApiService {
 
   constructor(private http: HttpClient) { }
-  path = 'https://api.github.com/repos/aanchlia/github-api-project';
 
   getCommits() {
-    const path = `${this.path}/commits`;
+    const path = '/commits';
     return this.http.get(path).pipe(
       map((response: any) => response),
       catchError(error => observableThrowError(error))

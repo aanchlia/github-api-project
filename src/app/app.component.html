@@ -1,4 +1,4 @@
-<mat-progress-spinner class="spinner" *ngIf="loading" color="primary" mode="indeterminate"></mat-progress-spinner>
+<mat-progress-spinner class="spinner" *ngIf="loading" color="accent" mode="indeterminate"></mat-progress-spinner>
 <div class="table">
   <span class="heading">
     <h2> {{ title }}</h2>
@@ -10,22 +10,19 @@
         <td mat-cell *matCellDef="let element"> {{ element.commit.author.name }} </td>
       </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let element"> {{ element.commit.author.email }} </td>
-      </ng-container>
-
-      <!-- Weight Column -->
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef> Date </th>
         <td mat-cell *matCellDef="let element"> {{ element.commit.author.date | date: 'short' }} </td>
       </ng-container>
 
-      <!-- Symbol Column -->
       <ng-container matColumnDef="message">
         <th mat-header-cell *matHeaderCellDef> Message </th>
         <td mat-cell *matCellDef="let element"> {{ element.commit.message }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="commit#">
+        <th mat-header-cell *matHeaderCellDef> Commit # </th>
+        <td mat-cell *matCellDef="let element"> <a [href]="element.html_url" target="_blank">{{ element.sha }}</a> </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
