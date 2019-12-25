@@ -10,8 +10,16 @@ export class GithubApiService {
 
   constructor(private http: HttpClient) { }
 
-  getCommits() {
-    const path = '/commits';
+  getCommits(branchName) {
+    const path = `/commits?sha=${branchName}`;
+    return this.http.get(path).pipe(
+      map((response: any) => response),
+      catchError(error => observableThrowError(error))
+    );
+  }
+
+  getBranches() {
+    const path = '/branches';
     return this.http.get(path).pipe(
       map((response: any) => response),
       catchError(error => observableThrowError(error))

@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   title = 'Git Commits';
   displayedColumns: string[] = ['name', 'date', 'message', 'commit#'];
   loading = true;
+  branches = [];
+  branch = 'master';
 
   commits = new MatTableDataSource();
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -21,10 +23,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCommits();
+    this.fetchBranches();
   }
 
   fetchCommits() {
-    this.github.getCommits().subscribe(
+    this.github.getCommits(this.branch).subscribe(
       (res) => {
         if (res) {
           for (const data of res) {
@@ -37,5 +40,18 @@ export class AppComponent implements OnInit {
         }
       }
     );
+  }
+
+  fetchBranches() {
+    this.github.getBranches().subscribe(
+      (res) => {
+        this.branches = res;
+      }
+    );
+  }
+
+  updateBranch(event) {
+    this.branch = event.value;
+    this.fetchCommits();
   }
 }

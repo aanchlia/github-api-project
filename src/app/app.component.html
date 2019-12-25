@@ -2,6 +2,11 @@
 <div class="table">
   <span class="heading">
     <h2> {{ title }}</h2>
+    <mat-form-field color="accent" style="background: #424242;">
+    <mat-select placeholder="Select Branch" [(value)]="branch" (selectionChange)="updateBranch($event)">
+      <mat-option *ngFor="let branch of branches" [value]="branch.name">{{ branch.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
   </span>
   <div *ngIf="commits" class="commits mat-elevation-z8">
     <table mat-table [dataSource]="commits">
